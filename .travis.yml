@@ -1,0 +1,30 @@
+# Thomas Carlberg 101155271
+env:
+  global:
+    - NOW_TOKEN: FdO5rSzndevhu6Fx5FA38jg8
+
+language: node_js
+
+node_js:
+  - 10.9.0
+
+cache: npm
+
+install:
+  - npm install
+
+script:
+  - npm run build
+  - npm run test
+
+install:
+  - npm install
+
+before_install:
+  - "npm config set spin false"
+  - npm i -g now
+
+deploy:
+  provider: script
+  script: bash scripts/deploy.sh
+  skip_cleanup: true
